@@ -15,6 +15,9 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Get system locale
+        run: Get-WinSystemLocale
+        shell: powershell
       - name: Check python encoding on default locale
         run: |
           echo a | python -I -c "import sys; print(sys.stdin.encoding)"
