@@ -17,12 +17,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Check python encoding on default locale
         run: |
-          echo a | python -c "import sys; print(sys.stdin.encoding)"
-          echo a | python -X utf8 -c "import sys; print(sys.stdin.encoding)"
+          echo a | python -I -c "import sys; print(sys.stdin.encoding)"
+          echo a | python -I -X utf8 -c "import sys; print(sys.stdin.encoding)"
       - name: Set system locale to JP
         run: Set-WinSystemLocale ja-JP
         shell: powershell
       - name: Check python encoding on JP locale
         run: |
-          echo a | python -c "import sys; print(sys.stdin.encoding)"
-          echo a | python -X utf8 -c "import sys; print(sys.stdin.encoding)"
+          echo a | python -I -c "import sys; print(sys.stdin.encoding)"
+          echo a | python -I -X utf8 -c "import sys; print(sys.stdin.encoding)"
